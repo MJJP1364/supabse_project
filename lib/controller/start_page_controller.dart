@@ -23,12 +23,24 @@ class StartPageController extends GetxController {
         email: '${emailController.text.trim()}@gmail.com',
         password: passwordController.text.trim(),
       );
-      Get.snackbar('SignUp', 'Success to SignUp',
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.green);
+      Get.snackbar(
+        'SignUp',
+        'Success to SignUp',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+        margin: const EdgeInsets.all(15),
+      );
       signUpLoading.value = false;
     } catch (e) {
-      Get.snackbar('SignUp', 'Failed to SignUp',
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.red);
+      Get.snackbar(
+        'SignUp',
+        'Failed to SignUp',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        margin: const EdgeInsets.all(15),
+      );
     } finally {
       signUpLoading.value = false;
     }
@@ -41,12 +53,24 @@ class StartPageController extends GetxController {
         email: '${emailController.text.trim()}@gmail.com',
         password: passwordController.text.trim(),
       );
-      Get.snackbar('SignIn', 'Success to SignIn',
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.green);
+      Get.snackbar(
+        'SignIn',
+        'Success to SignIn',
+        snackPosition: SnackPosition.BOTTOM,
+        colorText: Colors.white,
+        backgroundColor: Colors.green.withOpacity(0.4),
+        margin: const EdgeInsets.all(15),
+      );
       signUpLoading.value = false;
     } catch (e) {
-      Get.snackbar('SignIn', 'Failed to SignIn',
-          snackPosition: SnackPosition.BOTTOM, backgroundColor: Colors.red);
+      Get.snackbar(
+        'SignIn',
+        'Failed to SignIn',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+        margin: const EdgeInsets.all(15),
+      );
     } finally {
       signInLoading.value = false;
     }
