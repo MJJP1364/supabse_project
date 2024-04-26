@@ -44,7 +44,7 @@ class StartPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 InputText(
-                  controller: controller.emailController.value,
+                  controller: controller.emailController,
                   icon: Icons.email,
                   labale: 'Email',
                   hintText: 'Please Enter Email',
@@ -52,7 +52,7 @@ class StartPage extends StatelessWidget {
                 const SizedBox(height: 10),
                 Obx(
                   () => InputText(
-                    controller: controller.passwordController.value,
+                    controller: controller.passwordController,
                     labale: 'password',
                     hintText: 'Enter Password',
                     icon: Icons.password,
@@ -65,9 +65,27 @@ class StartPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 10),
-                ElevatedButton(onPressed: () {}, child: const Text('Login')),
+                Obx(
+                  () => controller.signInLoading.value
+                      ? const Center(child: CircularProgressIndicator())
+                      : ElevatedButton(
+                          onPressed: () => controller.signInMethod(),
+                          child: const Text('Login')),
+                ),
                 const SizedBox(height: 10),
-                OutlinedButton(onPressed: () {}, child: const Text('Singup'))
+                Obx(
+                  // ignore: unrelated_type_equality_checks
+                  () => controller.signUpLoading == true
+                      ? const Center(child: CircularProgressIndicator())
+                      : OutlinedButton(
+                          onPressed: () {
+                            final isValid = _formKey.currentState?.validate();
+                            if (isValid == true) {
+                              controller.signUpMethod();
+                            }
+                          },
+                          child: const Text('Sing Up')),
+                )
               ],
             ),
           ),
