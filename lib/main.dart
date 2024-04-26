@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
-import 'package:project/screens/home_page.dart';
+import 'package:project/screens/auth_Page.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
@@ -22,12 +22,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Flutter Supabase',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const AuthPage(),
     );
   }
 }
