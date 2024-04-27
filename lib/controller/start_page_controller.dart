@@ -9,7 +9,7 @@ class StartPageController extends GetxController {
   RxBool signUpLoading = false.obs;
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  RxBool sufixIcon = false.obs;
+  RxBool sufixIcon = true.obs;
 
   // Methodes
   void sufixIconMethod() {
