@@ -6,6 +6,7 @@ import 'package:project/screens/widgets/input_text.dart';
 class StartPage extends StatelessWidget {
   StartPage({super.key});
   final controller = Get.put(StartPageController());
+
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -85,7 +86,17 @@ class StartPage extends StatelessWidget {
                             }
                           },
                           child: const Text('Sing Up')),
-                )
+                ),
+                const SizedBox(height: 10),
+                const Divider(indent: 20, endIndent: 20),
+                const SizedBox(height: 10),
+                Obx(
+                  () => controller.googlesignInLoading.value == true
+                      ? const Center(child: CircularProgressIndicator())
+                      : ElevatedButton(
+                          onPressed: () => controller.googleSignIn(),
+                          child: const Text('Google SignIn')),
+                ),
               ],
             ),
           ),
