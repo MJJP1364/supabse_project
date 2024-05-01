@@ -6,22 +6,28 @@ class InputText extends StatelessWidget {
     required this.controller,
     required this.labale,
     required this.hintText,
-    required this.icon,
+    this.icon,
     this.sufixe,
     this.onTap,
     this.obsecured = false,
+    this.textMinLines = 1,
+    this.textMaxLines = 1,
   });
   final String labale;
   final String hintText;
-  final IconData icon;
+  final IconData? icon;
   final TextEditingController controller;
   final IconData? sufixe;
   final VoidCallback? onTap;
   final bool? obsecured;
+  final int? textMinLines;
+  final int? textMaxLines;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      minLines: textMinLines,
+      maxLines: textMaxLines,
       obscureText: obsecured!,
       validator: (value) {
         if (value == null || value.isEmpty) {
