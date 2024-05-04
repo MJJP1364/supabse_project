@@ -4,10 +4,14 @@ class CrudModel {
   final String title;
   final String description;
   final String user_id;
-  CrudModel({
+  final String? imgUrl;
+  final String? fileName;
+  CrudModel( {
     required this.id,
     required this.title,
     required this.description,
     required this.user_id,
+    this.fileName,
+    this.imgUrl,
   });
 }

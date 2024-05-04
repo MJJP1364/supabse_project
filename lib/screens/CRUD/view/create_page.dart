@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:project/screens/CRUD/controller/crud_controller.dart';
 import 'package:project/screens/widgets/input_text.dart';
 
-class CreatePage extends StatelessWidget {
-  const CreatePage({super.key});
+import '../../widgets/add_photo.dart';
 
+class CreatePage extends StatelessWidget {
+  CreatePage({super.key});
+
+  final controller = Get.put(CrudController());
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(CrudController());
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -60,6 +62,37 @@ class CreatePage extends StatelessWidget {
                         ),
                       ),
               ),
+              const SizedBox(height: 20),
+
+              Obx(() {
+                return AddPhoto(
+                  w: 200,
+                  h: 165,
+                  onTap: () => controller.uploadImg(),
+                  widget: Align(
+                    alignment: Alignment.center,
+                    child: controller.uploadImgLoading.value == true
+                        ? const Center(child: CircularProgressIndicator())
+                        // ignore: unrelated_type_equality_checks
+                        : controller.imgUrl1.value == ''
+                            ? const Icon(
+                                Icons.upload_file,
+                                color: Colors.amber,
+                                size: 55,
+                              )
+                            : AddPhoto(
+                                w: 160,
+                                h: 160,
+                                widget: ClipOval(
+                                  child: Image.network(
+                                    controller.imgUrl1.value,
+                                    fit: BoxFit.fill,
+                                  ),
+                                ),
+                              ),
+                  ),
+                );
+              }),
             ],
           ),
         ),

@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.5
   supabase_flutter: ^2.5.1
   google_sign_in: ^6.1.6
+  file_picker: ^7.0.2
 
 dev_dependencies:
   flutter_test:
